@@ -40,6 +40,15 @@ echo "Generated hash: $HASH"
 
 sed -i "s/password_secret =/password_secret = $PASSWORD/" /etc/graylog/server/server.conf
 sed -i "s/root_password_sha2 =/root_password_sha2 = $HASH/" /etc/graylog/server/server.conf
+sed -i "s/#http_bind_address = 127.0.0.1:9000/http_bind_address = 0.0.0.0:9000/" /etc/graylog/server/server.conf
+
+sudo mkdir -p /var/run/mongodb
+sudo chown mongodb:mongodb /var/run/mongodb
+sudo chmod 0755 /var/run/mongodb
+sudo mkdir -p /var/lib/mongo
+sudo chown mongodb:mongodb /var/lib/mongo
+sudo chmod 0700 /var/lib/mongo
+
 
 sudo systemctl daemon-reload
 sudo systemctl enable graylog-server.service
