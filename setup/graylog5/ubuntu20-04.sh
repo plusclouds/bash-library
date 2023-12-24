@@ -1,4 +1,12 @@
 #!/bin/bash
+
+Color_Off='\033[0m'       # Text Reset
+BGreen='\033[1;32m'       # Green
+
+echo "${BGreen} This is a library created by PlusClouds R&D team to make things faster. \n\n"
+
+echo "${BGreen} This bash script installs elasticsearch, mongodb and graylog 5 on Ubuntu 20.04"
+
 sudo apt update && sudo apt upgrade -y
 sudo apt-get install gnupg curl
 sudo wget -qO- https://pgp.mongodb.com/server-6.0.asc | sudo gpg --dearmor --batch --yes -o /usr/share/keyrings/mongodb-server-6.0.gpg
